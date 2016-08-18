@@ -1,0 +1,18 @@
+{
+  "title": "Vk.com music player toolbar",
+  "name": "vk-music-player-addon",
+  "version": "0.1.0",
+  "description": "vk.com music player toolbar",
+  "main": "lib/main.js",
+  "author": "Oleg Deryabin",
+  "engines": {
+    "firefox": ">=38.0a1"
+  },
+  "license": "MIT",
+  "keywords": [
+    "vk.com",
+    "vkontakte",
+    "music",
+    "player"
+  ]
+}
