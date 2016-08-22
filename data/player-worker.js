@@ -1,4 +1,4 @@
-(function() {
+(function(APP) {
     "use strict";
 
 
@@ -177,4 +177,6 @@
 
     }
 
-})();
+    APP.Player = AudioPlayer;
+
+})(window);
