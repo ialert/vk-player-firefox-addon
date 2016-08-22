@@ -17,6 +17,13 @@
             this._currentTrack = 0;
             this.playing = false;
 
+            this.registerEvents();
+
+        }
+
+        registerEvents() {
+
+        	this.handler.addEventListener('ended',this._playNextTrack.bind(this));
         }
 
         /**
@@ -44,7 +51,7 @@
 
             if (!this.playing) {
 
-                const track = ;
+                const track = '';
 
                 if (this.currentTrack) {
 
@@ -157,6 +164,15 @@
 
                 this.currentTrack--;
             }
+        }
+
+        /**
+         * Set next track && play it.
+         */
+        _playNextTrack() {
+
+        	this.next();
+        	this.play();
         }
 
     }
