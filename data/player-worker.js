@@ -20,6 +20,14 @@
         }
 
         /**
+         * Register event for audio handler objecet
+         */
+        registerEvent(event,callback) {
+
+            this.handler.addEventListener(event,callback);
+        }
+
+        /**
          * Get current track object
          * @return {Object|boolean} Track object or false
          */
@@ -44,7 +52,7 @@
 
             if (!this.playing) {
 
-                const track = ;
+                const track = '';
 
                 if (this.currentTrack) {
 
@@ -157,6 +165,15 @@
 
                 this.currentTrack--;
             }
+        }
+
+        /**
+         * Set next track && play it.
+         */
+        _playNextTrack() {
+
+            this.next();
+            this.play();
         }
 
     }
