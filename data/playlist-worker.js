@@ -3,7 +3,7 @@
 
     const playlistItem = document.getElementById('playlist');
     const trackTemplate = document.getElementById('audio_item');
-    const audioPlayer;
+    const audioPlayer = {};
 
     function getDuration(secs) {
 
