@@ -36,6 +36,15 @@
         }
 
         /**
+         * Check is playing now
+         * @return {Boolean} True if playing or false
+         */
+        isPlaying() {
+
+        	return this.playing;
+        }
+
+        /**
          * Set current track number in playlist
          * @param  {integer} track Track number
          */
