@@ -9,16 +9,42 @@
     class AudioPlayer {
 
 
-        constructor(audioElement, playlist) {
+        constructor(audioElement) {
 
             this.handler = audioElement || new window.Audio();
-            this.tracks = playlist || [];
+            this.tracks = [];
 
             this._currentTrack = 0;
             this.playing = false;
 
             this.registerEvents();
 
+        }
+
+        /**
+         * Get playlist
+         * @return {Array} playlist array
+         */
+        get playlist() {
+
+        	return this.tracks;
+        }
+
+        /**
+         * Set playlist
+         * @param  {Array} playlist Playlist array
+         */
+        set playlist(playlist) {
+
+            this._currentTrack = 0;
+
+            if(this.playing) {
+
+                this.playing = false;
+                this.stop();
+            }
+
+        	this.tracks = playlist;
         }
 
         /**
