@@ -35,7 +35,7 @@
             this.classList.add('playing');
 
             let loadTrack = this.dataset.number;
-            let currentTrack = audioPlayer.currentTrack;
+            let currentTrack = audioPlayer.currentTrackNumber;
 
             if (loadTrack !== currentTrack) {
 
@@ -49,8 +49,11 @@
                     }
                 }
 
-                audioPlayer.currentTrack = loadTrack;
+                audioPlayer.currentTrackNumber = loadTrack;
+                audioPlayer.loadCurrentTrack();
             }
+
+            if(audioPlayer.isPlaying()) audioPlayer.stop();
 
             audioPlayer.play();
 
