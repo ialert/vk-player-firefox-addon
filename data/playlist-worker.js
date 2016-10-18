@@ -32,16 +32,14 @@
 
         if (!this.classList.contains('playing')) {
 
-            this.classList.add('playing');
-
             let loadTrack = this.dataset.number;
-            let currentTrack = audioPlayer.currentTrack;
+            let currentTrack = audioPlayer.currentTrackNumber;
 
             if (loadTrack !== currentTrack) {
 
                 if (currentTrack !== false) {
 
-                    let prevTrack = playlistItem.getElementsByClassName('audio-' + audioPlayer.currentTrack)[0];
+                    let prevTrack = playlistItem.getElementsByClassName('audio-' + currentTrack)[0];
 
                     if (prevTrack) {
 
@@ -49,8 +47,13 @@
                     }
                 }
 
-                audioPlayer.currentTrack = loadTrack;
+                audioPlayer.currentTrackNumber = loadTrack;
+                audioPlayer.loadCurrentTrack();
             }
+
+            this.classList.add('playing');
+
+            if(audioPlayer.isPlaying()) audioPlayer.stop();
 
             audioPlayer.play();
 
@@ -99,7 +102,7 @@
 
             audioPlayer.pause();
 
-            const currentItem = playlistItem.getElementsByClassName('audio-' + audioPlayer.currentTrack)[0];
+            const currentItem = playlistItem.getElementsByClassName('audio-' + audioPlayer.currentTrackNumber)[0];
 
             if (currentItem) {
 
@@ -109,7 +112,7 @@
 
             audioPlayer.play();
 
-            const currentItem = playlistItem.getElementsByClassName('audio-' + audioPlayer.currentTrack)[0];
+            const currentItem = playlistItem.getElementsByClassName('audio-' + audioPlayer.currentTrackNumber)[0];
 
             if (currentItem) {
 
