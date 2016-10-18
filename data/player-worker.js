@@ -57,6 +57,15 @@
         }
 
         /**
+         * Get current track number
+         * @return {integer} Track number
+         */
+        get currentTrackNumber() {
+
+        	return this._currentTrack;
+        }
+
+        /**
          * Check is playing now
          * @return {Boolean} True if playing or false
          */
