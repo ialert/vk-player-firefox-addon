@@ -9,10 +9,10 @@
     class AudioPlayer {
 
 
-        constructor(audioElement, playlist) {
+        constructor(audioElement) {
 
             this.handler = audioElement || new window.Audio();
-            this.tracks = playlist || [];
+            this.tracks = [];
 
             this._currentTrack = 0;
             this.playing = false;
@@ -21,6 +21,27 @@
 
         }
 
+        /**
+         * Get playlist
+         * @return {Array} playlist array
+         */
+        get playlist() {
+
+        	return this.tracks;
+        }
+
+        /**
+         * Set playlist
+         * @param  {Array} playlist Playlist array
+         */
+        set playlist(playlist) {
+
+        	this.tracks = playlist;
+        }
+
+        /**
+         * Register event for audio handler objecet
+         */
         registerEvents() {
 
         	this.handler.addEventListener('ended',this._playNextTrack.bind(this));
