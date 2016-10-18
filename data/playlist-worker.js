@@ -52,6 +52,8 @@
                 audioPlayer.currentTrack = loadTrack;
             }
 
+            if(audioPlayer.isPlaying()) audioPlayer.stop();
+
             audioPlayer.play();
 
         } else {
