@@ -57,10 +57,14 @@
 
             audioPlayer.play();
 
+            self.port.emit("state","playing");
+
         } else {
 
             this.classList.remove('playing');
             audioPlayer.pause();
+
+            self.port.emit("state","pause");
         }
     }
 
