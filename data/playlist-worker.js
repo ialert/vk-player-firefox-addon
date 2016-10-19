@@ -49,7 +49,8 @@
                     }
                 }
 
-                audioPlayer.currentTrack = loadTrack;
+                audioPlayer.currentTrackNumber = loadTrack;
+                audioPlayer.loadCurrentTrack();
             }
 
             if(audioPlayer.isPlaying()) audioPlayer.stop();
