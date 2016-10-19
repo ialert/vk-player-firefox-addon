@@ -1,8 +1,16 @@
 (function(APP) {
     "use strict";
 
+    const loginContent = document.getElementById('login-content');
+    const loginButton = document.getElementById('auth-button');
+
+    const playlistContent = document.getElementById('playlist-content');
     const playlistItem = document.getElementById('playlist');
     const trackTemplate = document.getElementById('audio_item');
+
+    const CSS_HIDDEN_CLASS = 'hidden';
+    const CSS_PLAYING_CLASS = 'playing';
+
     const audioPlayer = new Player(false);
 
     function getDuration(secs) {
@@ -57,18 +65,18 @@
 
             audioPlayer.play();
 
-            self.port.emit("state","playing");
+            self.port.emit("state", "playing");
 
         } else {
 
             this.classList.remove('playing');
             audioPlayer.pause();
 
-            self.port.emit("state","pause");
+            self.port.emit("state", "pause");
         }
     }
 
-    function removePlayingItemClass(parent,item) {
+    function removePlayingItemClass(parent, item) {
 
         const currentItem = parent.getElementsByClassName('audio-' + item)[0];
 
@@ -78,7 +86,7 @@
         }
     }
 
-    function setPlayingItemClass(parent,item) {
+    function setPlayingItemClass(parent, item) {
 
         const currentItem = parent.getElementsByClassName('audio-' + item)[0];
 
@@ -88,9 +96,26 @@
         }
     }
 
+    function openAuthTab() {
+
+        self.port.emit("openAuthTab");
+    }
+
+
+    loginButton.addEventListener("click", openAuthTab);
+
+    self.port.on('showLogin', function() {
+
+        playlistContent.classList.add(CSS_HIDDEN_CLASS)
+        loginContent.classList.remove(CSS_HIDDEN_CLASS);
+    });
+
     self.port.on('loadPlaylist', function(playlist) {
 
         if (audioPlayer.isPlaying()) return;
+
+        loginContent.classList.add(CSS_HIDDEN_CLASS)
+        playlistContent.classList.remove(CSS_HIDDEN_CLASS);
 
         let template = trackTemplate.innerHTML;
         let content = '';
@@ -126,25 +151,25 @@
 
             audioPlayer.pause();
 
-            removePlayingItemClass(playlistItem,audioPlayer.currentTrackNumber);
+            removePlayingItemClass(playlistItem, audioPlayer.currentTrackNumber);
 
         } else {
 
             audioPlayer.play();
 
-            setPlayingItemClass(playlistItem,audioPlayer.currentTrackNumber);
+            setPlayingItemClass(playlistItem, audioPlayer.currentTrackNumber);
         }
     });
 
     self.port.on('next', function(isPlay) {
 
-        removePlayingItemClass(playlistItem,audioPlayer.currentTrackNumber);
+        removePlayingItemClass(playlistItem, audioPlayer.currentTrackNumber);
 
         audioPlayer.next();
 
         if (isPlay) {
 
-            setPlayingItemClass(playlistItem,audioPlayer.currentTrackNumber);
+            setPlayingItemClass(playlistItem, audioPlayer.currentTrackNumber);
 
             audioPlayer.play();
         }
@@ -152,13 +177,13 @@
 
     self.port.on('prev', function(isPlay) {
 
-        removePlayingItemClass(playlistItem,audioPlayer.currentTrackNumber);
+        removePlayingItemClass(playlistItem, audioPlayer.currentTrackNumber);
 
         audioPlayer.prev();
 
         if (isPlay) {
 
-            setPlayingItemClass(playlistItem,audioPlayer.currentTrackNumber);
+            setPlayingItemClass(playlistItem, audioPlayer.currentTrackNumber);
 
             audioPlayer.play();
         }
