@@ -53,7 +53,7 @@
 
             this.classList.add('playing');
 
-            if(audioPlayer.isPlaying()) audioPlayer.stop();
+            if (audioPlayer.isPlaying()) audioPlayer.stop();
 
             audioPlayer.play();
 
@@ -61,6 +61,26 @@
 
             this.classList.remove('playing');
             audioPlayer.pause();
+        }
+    }
+
+    function removePlayingItemClass(parent,item) {
+
+        const currentItem = parent.getElementsByClassName('audio-' + item)[0];
+
+        if (currentItem) {
+
+            currentItem.classList.remove('playing');
+        }
+    }
+
+    function setPlayingItemClass(parent,item) {
+
+        const currentItem = parent.getElementsByClassName('audio-' + item)[0];
+
+        if (currentItem) {
+
+            currentItem.classList.add('playing');
         }
     }
 
@@ -102,30 +122,25 @@
 
             audioPlayer.pause();
 
-            const currentItem = playlistItem.getElementsByClassName('audio-' + audioPlayer.currentTrackNumber)[0];
+            removePlayingItemClass(playlistItem,audioPlayer.currentTrackNumber);
 
-            if (currentItem) {
-
-                currentItem.classList.remove('playing');
-            }
         } else {
 
             audioPlayer.play();
 
-            const currentItem = playlistItem.getElementsByClassName('audio-' + audioPlayer.currentTrackNumber)[0];
-
-            if (currentItem) {
-
-                currentItem.classList.add('playing');
-            }
+            setPlayingItemClass(playlistItem,audioPlayer.currentTrackNumber);
         }
     });
 
     self.port.on('next', function(isPlay) {
 
+        removePlayingItemClass(playlistItem,audioPlayer.currentTrackNumber);
+
         audioPlayer.next();
 
         if (isPlay) {
+
+            setPlayingItemClass(playlistItem,audioPlayer.currentTrackNumber);
 
             audioPlayer.play();
         }
@@ -133,9 +148,13 @@
 
     self.port.on('prev', function(isPlay) {
 
+        removePlayingItemClass(playlistItem,audioPlayer.currentTrackNumber);
+
         audioPlayer.prev();
 
         if (isPlay) {
+
+            setPlayingItemClass(playlistItem,audioPlayer.currentTrackNumber);
 
             audioPlayer.play();
         }
