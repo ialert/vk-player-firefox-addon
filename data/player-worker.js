@@ -60,9 +60,9 @@
         }
 
         /**
-        registerEvent(event, callback) {
+        registerEvent(event,callback) {
 
-            this.handler.addEventListener(event, callback);
+            this.handler.addEventListener(event,callback);
         }
 
         /**
@@ -121,7 +121,7 @@
         isPlaying() {
 
             return this.playing;
-                }
+        }
 
 
 
@@ -238,15 +238,6 @@
             }
 
             this.loadCurrentTrack();
-        }
-
-        /**
-         * Set next track && play it.
-         */
-        _playNextTrack() {
-
-            this.next();
-            this.play();
         }
 
     }
