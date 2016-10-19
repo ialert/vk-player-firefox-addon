@@ -51,10 +51,10 @@
         /**
          * Register event for audio handler objecet
          */
-        registerEvent(event,callback) {
+        registerEvent(event, callback) {
 
-            this.handler.addEventListener(event,callback);
-        }
+            this.handler.addEventListener(event, callback);
+        } 
 
         /**
          * Get current track object
@@ -65,6 +65,9 @@
             return this.tracks[this._currentTrack] ? this.tracks[this._currentTrack] : false;
         }
 
+        /**
+         * Load current track in audio handler
+         */
         setCurrentTrack() {
 
             if (this.currentTrack !== false) {
@@ -226,15 +229,6 @@
             }
 
             this.loadCurrentTrack();
-        }
-
-        /**
-         * Set next track && play it.
-         */
-        _playNextTrack() {
-
-            this.next();
-            this.play();
         }
 
     }
