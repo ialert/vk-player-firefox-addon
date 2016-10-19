@@ -32,8 +32,6 @@
 
         if (!this.classList.contains('playing')) {
 
-            this.classList.add('playing');
-
             let loadTrack = this.dataset.number;
             let currentTrack = audioPlayer.currentTrackNumber;
 
@@ -52,6 +50,8 @@
                 audioPlayer.currentTrackNumber = loadTrack;
                 audioPlayer.loadCurrentTrack();
             }
+
+            this.classList.add('playing');
 
             if(audioPlayer.isPlaying()) audioPlayer.stop();
 
