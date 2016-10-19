@@ -102,7 +102,7 @@
 
             audioPlayer.pause();
 
-            const currentItem = playlistItem.getElementsByClassName('audio-' + audioPlayer.currentTrack)[0];
+            const currentItem = playlistItem.getElementsByClassName('audio-' + audioPlayer.currentTrackNumber)[0];
 
             if (currentItem) {
 
@@ -112,7 +112,7 @@
 
             audioPlayer.play();
 
-            const currentItem = playlistItem.getElementsByClassName('audio-' + audioPlayer.currentTrack)[0];
+            const currentItem = playlistItem.getElementsByClassName('audio-' + audioPlayer.currentTrackNumber)[0];
 
             if (currentItem) {
 
