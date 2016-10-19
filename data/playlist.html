@@ -4,7 +4,18 @@
         <meta charset="UTF-8"/>
     </head>
     <body>
-        <div class="content">
+    	<div id="login-content" class="hidden">
+            <div class="msg">
+                Для прослушивания музыки, вам необходимо авторизоваться на сайте vk.com.Для продолжения, нажмите на кнопку ниже
+            </div>
+            <div class="login-button">
+                <button id="auth-button" class="flat_button">
+                    Войти через ВКонтакте
+                </button>
+            </div>
+        </div>
+
+        <div id="playlist-content">
             <ul id="playlist"></ul>
         </div>
 	    <script type="text/html" id="audio_item">
