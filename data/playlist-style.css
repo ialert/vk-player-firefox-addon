@@ -13,6 +13,43 @@ body {
     font-size: 13px;
 }
 
+.clearfix {
+    clear: both;
+}
+
+.hidden {
+    display: none;
+}
+
+#login-content {
+    margin-top: 25px;
+    text-align: center;
+}
+
+#login-content .login-button {
+    margin-top: 25px;
+}
+
+#login-content .flat_button {
+    background: #5e81a8 none repeat scroll 0 0;
+    border: 0 none;
+    border-radius: 2px;
+    box-sizing: border-box;
+    color: #ffffff;
+    cursor: pointer;
+    display: inline-block;
+    font-family: -apple-system, BlinkMacSystemFont, Roboto, Open Sans, Helvetica Neue, sans-serif;
+    font-size: 12.5px;
+    line-height: 15px;
+    margin: 0;
+    outline: medium none;
+    padding: 7px 16px 8px;
+    text-align: center;
+    text-decoration: none;
+    vertical-align: top;
+    white-space: nowrap;
+}
+
 ul#playlist {
     list-style: none;
     margin: 15px;
@@ -26,35 +63,35 @@ ul#playlist li:hover {
     background-color: #f5f7fa;
 }
 
-.button, .title {
+ul#playlist .button, ul#playlist .title {
     float: left;
 }
 
-.title, .duration {
+ul#playlist .title, ul#playlist .duration {
     padding-top: 4px;
 }
 
-.duration {
+ul#playlist .duration {
     float: right;
     color: #939393;
 }
 
-.button {
+ul#playlist .button {
     width: 9%;
 }
 
-.title {
+ul#playlist .title {
     height: 20px;
     overflow: hidden;
     width: 70%;
 }
 
-.author {
+ul#playlist .author {
     color: #2a5885;
     font-weight: bold;
 }
 
-.audio_play {
+ul#playlist .audio_play {
     background: #577ca1 url("./images/audio_playpause.png") no-repeat scroll 8px 7px;
     border: medium none;
     border-radius: 50%;
@@ -65,10 +102,6 @@ ul#playlist li:hover {
     width: 24px;
 }
 
-.playing {
+ul#playlist .playing {
     background-position: 8px -15px;
-}
-
-.clearfix {
-    clear: both;
 }
