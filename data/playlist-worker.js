@@ -104,6 +104,16 @@
 
     loginButton.addEventListener("click", openAuthTab);
 
+    audioPlayer.registerEvent('ended',() => {
+
+        removePlayingItemClass(playlistItem, audioPlayer.currentTrackNumber);
+        audioPlayer.next();
+
+        setPlayingItemClass(playlistItem, audioPlayer.currentTrackNumber);
+        audioPlayer.play();
+        
+    });
+
     self.port.on('showLogin', function() {
 
         playlistContent.classList.add(CSS_HIDDEN_CLASS)
