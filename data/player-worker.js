@@ -17,6 +17,8 @@
             this._currentTrack = 0;
             this.playing = false;
 
+            this.loadCurrentTrack();
+
             this.registerEvents();
 
         }
