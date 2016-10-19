@@ -44,6 +44,8 @@
             }
 
             this.tracks = playlist;
+
+            this.loadCurrentTrack();
         }
 
         /**
