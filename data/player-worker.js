@@ -19,8 +19,6 @@
 
             this.loadCurrentTrack();
 
-            this.registerEvents();
-
         }
 
         /**
@@ -54,12 +52,6 @@
         /**
          * Register event for audio handler objecet
          */
-        registerEvents() {
-
-            this.handler.addEventListener('ended', this._playNextTrack.bind(this));
-        }
-
-        /**
         registerEvent(event,callback) {
 
             this.handler.addEventListener(event,callback);
