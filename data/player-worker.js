@@ -84,9 +84,9 @@
          * Set current track number in playlist
          * @param  {integer} track Track number
          */
-        set currentTrack(track) {
+        set currentTrackNumber(trackNumber) {
 
-            this._currentTrack = track;
+            this._currentTrack = trackNumber;
         }
 
         /**
