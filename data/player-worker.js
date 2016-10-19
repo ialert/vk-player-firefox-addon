@@ -36,6 +36,14 @@
          */
         set playlist(playlist) {
 
+            this._currentTrack = 0;
+
+            if (this.playing) {
+
+                this.playing = false;
+                this.stop();
+            }
+
         	this.tracks = playlist;
         }
 
@@ -44,7 +52,7 @@
          */
         registerEvents() {
 
-        	this.handler.addEventListener('ended',this._playNextTrack.bind(this));
+            this.handler.addEventListener('ended', this._playNextTrack.bind(this));
         }
 
         /**
@@ -54,6 +62,14 @@
         get currentTrack() {
 
             return this.tracks[this._currentTrack] ? this.tracks[this._currentTrack] : false;
+        }
+
+        setCurrentTrack() {
+
+            if (this.currentTrack !== false) {
+
+                this._setTrack(this.currentTrack.url);
+            }
         }
 
         /**
@@ -78,9 +94,9 @@
          * Set current track number in playlist
          * @param  {integer} track Track number
          */
-        set currentTrack(track) {
+        set currentTrackNumber(trackNumber) {
 
-            this._currentTrack = track;
+            this._currentTrack = trackNumber;
         }
 
         /**
@@ -88,19 +104,8 @@
          */
         play() {
 
-            if (!this.playing) {
-
-                const track = '';
-
-                if (this.currentTrack) {
-
-                    this._setTrack(this.currentTrack.url);
                     this.playing = true;
                     this._play();
-                }
-            }
-
-            this._play();
 
         }
 
@@ -210,8 +215,8 @@
          */
         _playNextTrack() {
 
-        	this.next();
-        	this.play();
+            this.next();
+            this.play();
         }
 
     }
