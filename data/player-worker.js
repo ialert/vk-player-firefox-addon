@@ -17,6 +17,8 @@
             this._currentTrack = 0;
             this.playing = false;
 
+            this.loadCurrentTrack();
+
             this.registerEvents();
 
         }
@@ -198,13 +200,13 @@
          */
         _setNext() {
 
-            if (this.currentTrack != this.tracks.length - 1) {
+            if (this.currentTrackNumber != this.tracks.length - 1) {
 
-                this.currentTrack++;
+                this.currentTrackNumber++;
 
             } else {
 
-                this.currentTrack = 0;
+                this.currentTrackNumber = 0;
             }
         }
 
@@ -213,13 +215,13 @@
          */
         _setPrev() {
 
-            if (this.currentTrack == 0) {
+            if (this.currentTrackNumber == 0) {
 
-                this.currentTrack = this.tracks.length - 1;
+                this.currentTrackNumber = this.tracks.length - 1;
 
             } else {
 
-                this.currentTrack--;
+                this.currentTrackNumber--;
             }
         }
 
