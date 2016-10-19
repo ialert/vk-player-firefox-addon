@@ -27,7 +27,7 @@
          */
         get playlist() {
 
-        	return this.tracks;
+            return this.tracks;
         }
 
         /**
@@ -38,13 +38,13 @@
 
             this._currentTrack = 0;
 
-            if(this.playing) {
+            if (this.playing) {
 
                 this.playing = false;
                 this.stop();
             }
 
-        	this.tracks = playlist;
+            this.tracks = playlist;
         }
 
         /**
@@ -70,16 +70,7 @@
          */
         get currentTrackNumber() {
 
-        	return this._currentTrack;
-        }
-
-        /**
-         * Check is playing now
-         * @return {Boolean} True if playing or false
-         */
-        isPlaying() {
-
-        	return this.playing;
+            return this._currentTrack;
         }
 
         /**
@@ -92,22 +83,33 @@
         }
 
         /**
+         * Load current track in handler
+         */
+        loadCurrentTrack() {
+
+            if (this.currentTrack !== false) {
+
+                this._setTrack(this.currentTrack.url);
+            }
+        }
+
+        /**
+         * Check is playing now
+         * @return {Boolean} True if playing or false
+         */
+        isPlaying() {
+
+            return this.playing;
+        }
+
+
+
+        /**
          * Switch player state to playing
          */
         play() {
 
-            if (!this.playing) {
-
-                const track = '';
-
-                if (this.currentTrack) {
-
-                    this._setTrack(this.currentTrack.url);
-                    this.playing = true;
-                    this._play();
-                }
-            }
-
+            this.playing = true;
             this._play();
 
         }
