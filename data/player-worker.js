@@ -60,6 +60,12 @@
         }
 
         /**
+        registerEvent(event, callback) {
+
+            this.handler.addEventListener(event, callback);
+        }
+
+        /**
          * Get current track object
          * @return {Object|boolean} Track object or false
          */
@@ -68,6 +74,9 @@
             return this.tracks[this._currentTrack] ? this.tracks[this._currentTrack] : false;
         }
 
+        /**
+         * Load current track in audio handler
+         */
         setCurrentTrack() {
 
             if (this.currentTrack !== false) {
@@ -112,7 +121,7 @@
         isPlaying() {
 
             return this.playing;
-        }
+                }
 
 
 
