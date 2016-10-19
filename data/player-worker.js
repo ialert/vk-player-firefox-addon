@@ -29,7 +29,7 @@
          */
         get playlist() {
 
-        	return this.tracks;
+            return this.tracks;
         }
 
         /**
@@ -40,13 +40,15 @@
 
             this._currentTrack = 0;
 
-            if(this.playing) {
+            if (this.playing) {
 
                 this.playing = false;
                 this.stop();
             }
 
-        	this.tracks = playlist;
+            this.tracks = playlist;
+
+            this.loadCurrentTrack();
         }
 
         /**
@@ -80,7 +82,7 @@
          */
         get currentTrackNumber() {
 
-        	return this._currentTrack;
+            return this._currentTrack;
         }
 
         /**
@@ -109,7 +111,7 @@
          */
         isPlaying() {
 
-        	return this.playing;
+            return this.playing;
         }
 
 
@@ -119,8 +121,8 @@
          */
         play() {
 
-                    this.playing = true;
-                    this._play();
+            this.playing = true;
+            this._play();
 
         }
 
