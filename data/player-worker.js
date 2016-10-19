@@ -27,7 +27,7 @@
          */
         get playlist() {
 
-        	return this.tracks;
+            return this.tracks;
         }
 
         /**
@@ -38,13 +38,13 @@
 
             this._currentTrack = 0;
 
-            if(this.playing) {
+            if (this.playing) {
 
                 this.playing = false;
                 this.stop();
             }
 
-        	this.tracks = playlist;
+            this.tracks = playlist;
         }
 
         /**
@@ -64,13 +64,21 @@
             return this.tracks[this._currentTrack] ? this.tracks[this._currentTrack] : false;
         }
 
+        setCurrentTrack() {
+
+            if (this.currentTrack !== false) {
+
+                this._setTrack(this.currentTrack.url);
+            }
+        }
+
         /**
          * Get current track number
          * @return {integer} Track number
          */
         get currentTrackNumber() {
 
-        	return this._currentTrack;
+            return this._currentTrack;
         }
 
         /**
@@ -79,7 +87,7 @@
          */
         isPlaying() {
 
-        	return this.playing;
+            return this.playing;
         }
 
         /**
@@ -96,18 +104,7 @@
          */
         play() {
 
-            if (!this.playing) {
-
-                const track = '';
-
-                if (this.currentTrack) {
-
-                    this._setTrack(this.currentTrack.url);
-                    this.playing = true;
-                    this._play();
-                }
-            }
-
+            this.playing = true;
             this._play();
 
         }
