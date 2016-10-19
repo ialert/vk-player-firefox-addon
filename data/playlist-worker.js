@@ -41,7 +41,7 @@
 
                 if (currentTrack !== false) {
 
-                    let prevTrack = playlistItem.getElementsByClassName('audio-' + audioPlayer.currentTrack)[0];
+                    let prevTrack = playlistItem.getElementsByClassName('audio-' + currentTrack)[0];
 
                     if (prevTrack) {
 
