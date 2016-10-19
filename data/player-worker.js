@@ -38,7 +38,7 @@
 
             this._currentTrack = 0;
 
-            if (this.playing) {
+            if(this.playing) {
 
                 this.playing = false;
                 this.stop();
@@ -82,6 +82,26 @@
         }
 
         /**
+         * Set current track number in playlist
+         * @param  {integer} track Track number
+         */
+        set currentTrackNumber(trackNumber) {
+
+            this._currentTrack = trackNumber;
+        }
+
+        /**
+         * Load current track in handler
+         */
+        loadCurrentTrack() {
+
+            if (this.currentTrack !== false) {
+
+                this._setTrack(this.currentTrack.url);
+            }
+        }
+
+        /**
          * Check is playing now
          * @return {Boolean} True if playing or false
          */
@@ -90,14 +110,7 @@
         	return this.playing;
         }
 
-        /**
-         * Set current track number in playlist
-         * @param  {integer} track Track number
-         */
-        set currentTrackNumber(trackNumber) {
 
-            this._currentTrack = trackNumber;
-        }
 
         /**
          * Switch player state to playing
