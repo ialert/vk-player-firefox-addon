@@ -17,6 +17,7 @@
             this._currentTrack = 0;
             this.playing = false;
 
+            this.loadCurrentTrack();
         }
 
         /**
@@ -25,7 +26,7 @@
          */
         get playlist() {
 
-        	return this.tracks;
+            return this.tracks;
         }
 
         /**
@@ -36,13 +37,13 @@
 
             this._currentTrack = 0;
 
-            if(this.playing) {
+            if (this.playing) {
 
                 this.playing = false;
                 this.stop();
             }
 
-        	this.tracks = playlist;
+            this.tracks = playlist;
         }
 
         /**
@@ -62,22 +63,21 @@
             return this.tracks[this._currentTrack] ? this.tracks[this._currentTrack] : false;
         }
 
+        setCurrentTrack() {
+
+            if (this.currentTrack !== false) {
+
+                this._setTrack(this.currentTrack.url);
+            }
+        }
+
         /**
          * Get current track number
          * @return {integer} Track number
          */
         get currentTrackNumber() {
 
-        	return this._currentTrack;
-        }
-
-        /**
-         * Check is playing now
-         * @return {Boolean} True if playing or false
-         */
-        isPlaying() {
-
-        	return this.playing;
+            return this._currentTrack;
         }
 
         /**
@@ -90,22 +90,33 @@
         }
 
         /**
+         * Load current track in handler
+         */
+        loadCurrentTrack() {
+
+            if (this.currentTrack !== false) {
+
+                this._setTrack(this.currentTrack.url);
+            }
+        }
+
+        /**
+         * Check is playing now
+         * @return {Boolean} True if playing or false
+         */
+        isPlaying() {
+
+            return this.playing;
+        }
+
+
+
+        /**
          * Switch player state to playing
          */
         play() {
 
-            if (!this.playing) {
-
-                const track = '';
-
-                if (this.currentTrack) {
-
-                    this._setTrack(this.currentTrack.url);
-                    this.playing = true;
-                    this._play();
-                }
-            }
-
+            this.playing = true;
             this._play();
 
         }
@@ -186,14 +197,16 @@
          */
         _setNext() {
 
-            if (this.currentTrack != this.tracks.length - 1) {
+            if (this.currentTrackNumber != this.tracks.length - 1) {
 
-                this.currentTrack++;
+                this.currentTrackNumber++;
 
             } else {
 
-                this.currentTrack = 0;
+                this.currentTrackNumber = 0;
             }
+
+            this.loadCurrentTrack();
         }
 
         /**
@@ -201,14 +214,16 @@
          */
         _setPrev() {
 
-            if (this.currentTrack == 0) {
+            if (this.currentTrackNumber == 0) {
 
-                this.currentTrack = this.tracks.length - 1;
+                this.currentTrackNumber = this.tracks.length - 1;
 
             } else {
 
-                this.currentTrack--;
+                this.currentTrackNumber--;
             }
+
+            this.loadCurrentTrack();
         }
 
         /**
