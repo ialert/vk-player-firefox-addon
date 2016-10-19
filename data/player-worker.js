@@ -208,6 +208,8 @@
 
                 this.currentTrackNumber = 0;
             }
+
+            this.loadCurrentTrack();
         }
 
         /**
@@ -223,6 +225,8 @@
 
                 this.currentTrackNumber--;
             }
+
+            this.loadCurrentTrack();
         }
 
         /**
