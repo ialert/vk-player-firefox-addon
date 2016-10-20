@@ -24,6 +24,7 @@ body {
 .msg-content {
     margin-top: 25px;
     text-align: center;
+    font-weight: bold;
 }
 
 #login-content .login-button {

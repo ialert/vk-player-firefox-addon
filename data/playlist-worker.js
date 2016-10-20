@@ -10,6 +10,9 @@
 
     const emptyPlaylistContent = document.getElementById('empty-playlist-content');
 
+    const apiErrorContent = document.getElementById('api-error-content');
+    const apiErrorElement = document.getElementById('api-error-msg');
+
     const CSS_HIDDEN_CLASS = 'hidden';
     const CSS_PLAYING_CLASS = 'playing';
     const CSS_CONTENT_CLASS = 'content';
@@ -165,6 +168,12 @@
     self.port.on('showLogin', function() {
 
         showContent(loginContent);
+    });
+
+    self.port.on('apiError', function(error) {
+
+        apiErrorElement.innerHTML = error.error_msg;
+        showContent(apiErrorContent);
     });
 
     self.port.on('emptyPlaylist', function() {
