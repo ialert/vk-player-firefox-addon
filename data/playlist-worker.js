@@ -16,6 +16,7 @@
     const CSS_HIDDEN_CLASS = 'hidden';
     const CSS_PLAYING_CLASS = 'playing';
     const CSS_CONTENT_CLASS = 'content';
+    const CSS_SCROLL_OFFSET = 50;
 
     const audioPlayer = new Player(false);
 
@@ -180,6 +181,19 @@
 
         showContent(emptyPlaylistContent);
     });
+
+    self.port.on('showPlaylist', function() {
+
+        const currentTrack = playlistItem.getElementsByClassName('audio-' + audioPlayer.currentTrackNumber)[0];
+
+        if (currentTrack) {
+
+            const topOffset = currentTrack.getBoundingClientRect().top + window.pageYOffset;
+
+            window.scroll(0, topOffset - CSS_SCROLL_OFFSET);
+        }
+    });
+
 
     self.port.on('loadPlaylist', function(playlist) {
 
