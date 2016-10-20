@@ -114,6 +114,11 @@
         
     });
 
+    audioPlayer.registerEvent('error',(error) => {
+
+        self.port.emit("state", "pause");
+    });
+
     self.port.on('showLogin', function() {
 
         playlistContent.classList.add(CSS_HIDDEN_CLASS)
