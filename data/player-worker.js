@@ -54,7 +54,7 @@
         registerEvent(event, callback) {
 
             this.handler.addEventListener(event, callback);
-        }  
+        }
 
         /**
          * Get current track object
@@ -229,6 +229,35 @@
             }
 
             this.loadCurrentTrack();
+        }
+
+        /**
+         * Get error message from error code
+         * @param  {integer} code error code
+         * @return {String}      error message
+         */
+        getErrorMessage(code) {
+
+            let msg = '';
+
+            switch (code) {
+                case e.target.error.MEDIA_ERR_ABORTED:
+                    msg = 'You aborted the media playback.';
+                    break;
+                case e.target.error.MEDIA_ERR_NETWORK:
+                    msg = 'A network error caused the media download to fail.';
+                    break;
+                case e.target.error.MEDIA_ERR_DECODE:
+                    msg = 'The media playback was aborted due to a corruption problem or because the media used features your browser did not support.';
+                    break;
+                case e.target.error.MEDIA_ERR_SRC_NOT_SUPPORTED:
+                    msg = 'The media could not be loaded, either because the server or network failed or because the format is not supported.';
+                    break;
+                default:
+                    msg = 'An unknown media error occurred.';
+            }
+
+            return msg;
         }
 
     }
