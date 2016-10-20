@@ -18,6 +18,8 @@
             this.playing = false;
 
             this.loadCurrentTrack();
+
+            this.registerEvent('error',this._stopPlaying);
         }
 
         /**
@@ -258,6 +260,15 @@
             }
 
             return msg;
+        }
+
+        /**
+         * Switch player state when error occurred
+         */
+        _stopPlaying() {
+
+            this.playing = false;
+            this.stop();
         }
 
     }
