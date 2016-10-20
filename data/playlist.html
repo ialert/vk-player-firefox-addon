@@ -4,7 +4,7 @@
         <meta charset="UTF-8"/>
     </head>
     <body>
-    	<div id="login-content" class="hidden">
+        <div id="login-content" class="content msg-content hidden">
             <div class="msg">
                 Для прослушивания музыки, вам необходимо авторизоваться на сайте vk.com.Для продолжения, нажмите на кнопку ниже
             </div>
@@ -14,23 +14,28 @@
                 </button>
             </div>
         </div>
-
-        <div id="playlist-content">
-            <ul id="playlist"></ul>
+        <div id="playlist-content" class="content hidden">
+            <ul id="playlist">
+            </ul>
         </div>
-	    <script type="text/html" id="audio_item">
-	    	<li>
-	            <div class="button">
-	                <button data-number="%number%" class="audio_play audio-%number%"></button>
-	            </div>
-	            <div class="title">
-	                <span class="author">%author%</span>
-	                <span class="divider">&ndash;</span>
-	                <span class="track">%title%</span>
-	            </div>
-	            <div class="duration">%duration%</div>
-	            <div class="clearfix"></div>
-	        </li>
-	    </script>
+        <div id="empty-playlist-content" class="content msg-content hidden">
+            <div class="msg">
+                К сожалению,у вас пустой плейлист.Добавьте треки в свой аккаунт,чтобы слушать музыку.
+            </div>
+        </div>
+        <script type="text/html" id="audio_item">
+        	    	<li>
+        	            <div class="button">
+        	                <button data-number="%number%" class="audio_play audio-%number%"></button>
+        	            </div>
+        	            <div class="title">
+        	                <span class="author">%author%</span>
+        	                <span class="divider">&ndash;</span>
+        	                <span class="track">%title%</span>
+        	            </div>
+        	            <div class="duration">%duration%</div>
+        	            <div class="clearfix"></div>
+        	        </li>
+        	    </script>
     </body>
 </html>

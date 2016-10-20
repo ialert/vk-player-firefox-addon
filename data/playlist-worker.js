@@ -8,8 +8,11 @@
     const playlistItem = document.getElementById('playlist');
     const trackTemplate = document.getElementById('audio_item');
 
+    const emptyPlaylistContent = document.getElementById('empty-playlist-content');
+
     const CSS_HIDDEN_CLASS = 'hidden';
     const CSS_PLAYING_CLASS = 'playing';
+    const CSS_CONTENT_CLASS = 'content';
 
     const audioPlayer = new Player(false);
 
@@ -101,6 +104,24 @@
         self.port.emit("openAuthTab");
     }
 
+    function showContent(element) {
+
+        const contentElements = document.getElementsByClassName(CSS_CONTENT_CLASS);
+
+        if (contentElements) {
+
+            for (let i in contentElements) {
+
+                if (contentElements.hasOwnProperty(i)) {
+
+                    contentElements[i].classList.add(CSS_HIDDEN_CLASS);
+                }
+            }
+        }
+
+        element.classList.remove(CSS_HIDDEN_CLASS);
+    }
+
 
     loginButton.addEventListener("click", openAuthTab);
 
@@ -136,23 +157,26 @@
         }
     });
 
-    audioPlayer.registerEvent('error',(error) => {
+    audioPlayer.registerEvent('error', (error) => {
 
         self.port.emit("state", "pause");
     });
 
     self.port.on('showLogin', function() {
 
-        playlistContent.classList.add(CSS_HIDDEN_CLASS)
-        loginContent.classList.remove(CSS_HIDDEN_CLASS);
+        showContent(loginContent);
+    });
+
+    self.port.on('emptyPlaylist', function() {
+
+        showContent(emptyPlaylistContent);
     });
 
     self.port.on('loadPlaylist', function(playlist) {
 
         if (audioPlayer.isPlaying()) return;
 
-        loginContent.classList.add(CSS_HIDDEN_CLASS)
-        playlistContent.classList.remove(CSS_HIDDEN_CLASS);
+        showContent(playlistContent);
 
         let template = trackTemplate.innerHTML;
         let content = '';

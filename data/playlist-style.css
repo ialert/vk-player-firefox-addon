@@ -21,7 +21,7 @@ body {
     display: none;
 }
 
-#login-content {
+.msg-content {
     margin-top: 25px;
     text-align: center;
 }
