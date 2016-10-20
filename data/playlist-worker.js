@@ -104,14 +104,36 @@
 
     loginButton.addEventListener("click", openAuthTab);
 
-    audioPlayer.registerEvent('ended',() => {
+    audioPlayer.registerEvent('ended', () => {
 
         removePlayingItemClass(playlistItem, audioPlayer.currentTrackNumber);
         audioPlayer.next();
 
         setPlayingItemClass(playlistItem, audioPlayer.currentTrackNumber);
         audioPlayer.play();
-        
+
+    });
+
+    audioPlayer.registerEvent('error', (error) => {
+
+        const isPlaying = audioPlayer.isPlaying();
+
+        removePlayingItemClass(playlistItem, audioPlayer.currentTrackNumber);
+
+        audioPlayer.next();
+
+        if (isPlaying) {
+
+            setPlayingItemClass(playlistItem, audioPlayer.currentTrackNumber);
+
+            audioPlayer.play();
+
+            self.port.emit("state", "playing");
+
+        } else {
+
+            self.port.emit("state", "pause");
+        }
     });
 
     self.port.on('showLogin', function() {
