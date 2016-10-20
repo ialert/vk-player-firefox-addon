@@ -19,6 +19,7 @@
 
             this.loadCurrentTrack();
 
+            this.registerEvent('error',this._stopPlaying);
         }
 
         /**
@@ -55,7 +56,7 @@
         registerEvent(event, callback) {
 
             this.handler.addEventListener(event, callback);
-        }  
+        }
 
         /**
          * Get current track object
@@ -259,6 +260,15 @@
             }
 
             return msg;
+        }
+
+        /**
+         * Switch player state when error occurred
+         */
+        _stopPlaying() {
+
+            this.playing = false;
+            this.stop();
         }
 
     }
