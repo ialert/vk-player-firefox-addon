@@ -13,6 +13,8 @@
     const apiErrorContent = document.getElementById('api-error-content');
     const apiErrorElement = document.getElementById('api-error-msg');
 
+    const logoutElement = document.getElementById('logout-link');
+
     const CSS_HIDDEN_CLASS = 'hidden';
     const CSS_PLAYING_CLASS = 'playing';
     const CSS_CONTENT_CLASS = 'content';
@@ -108,6 +110,12 @@
         self.port.emit("openAuthTab");
     }
 
+    function logOut() {
+
+        audioPlayer.stop();
+        self.port.emit("logout");
+    }
+
     function showContent(element) {
 
         const contentElements = document.getElementsByClassName(CSS_CONTENT_CLASS);
@@ -128,6 +136,7 @@
 
 
     loginButton.addEventListener("click", openAuthTab);
+    logoutElement.addEventListener('click', logOut);
 
     audioPlayer.registerEvent('ended', () => {
 

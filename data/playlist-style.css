@@ -26,6 +26,20 @@ body {
     text-align: center;
 }
 
+.logout {
+    float: right;
+    margin: 10px;
+}
+
+#logout-link {
+    background: url("images/logout.png");
+    background-size: cover;
+    cursor: pointer;
+    display: inline-block;
+    height: 20px;
+    width: 20px;
+}
+
 #login-content, #empty-playlist-content {
     padding-top: 15px;
 }
