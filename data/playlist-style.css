@@ -22,9 +22,12 @@ body {
 }
 
 .msg-content {
-    margin-top: 25px;
+    margin: 10px;
     text-align: center;
-    font-weight: bold;
+}
+
+#login-content, #empty-playlist-content {
+    padding-top: 15px;
 }
 
 #login-content .login-button {
