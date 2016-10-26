@@ -122,12 +122,9 @@
 
         if (contentElements) {
 
-            for (let i in contentElements) {
+            for (let element of contentElements) {
 
-                if (contentElements.hasOwnProperty(i)) {
-
-                    contentElements[i].classList.add(CSS_HIDDEN_CLASS);
-                }
+                element.classList.add(CSS_HIDDEN_CLASS);
             }
         }
 
@@ -228,12 +225,9 @@
 
         const audio_buttons = playlistItem.getElementsByClassName('audio_play');
 
-        for (let i in audio_buttons) {
+        for (let button of audio_buttons) {
 
-            if (audio_buttons.hasOwnProperty(i)) {
-
-                audio_buttons[i].addEventListener("click", playHandler);
-            }
+            button.addEventListener("click", playHandler);
         }
 
     });
