@@ -1,24 +1,20 @@
-(function(APP) {
+(function() {
     "use strict";
 
-    const loginContent = document.getElementById('login-content');
-    const loginButton = document.getElementById('auth-button');
+    const loginContent = document.getElementById('login-content'),
+        loginButton = document.getElementById('auth-button'),
+        playlistContent = document.getElementById('playlist-content'),
+        playlistItem = document.getElementById('playlist'),
+        trackTemplate = document.getElementById('audio_item'),
+        emptyPlaylistContent = document.getElementById('empty-playlist-content'),
+        apiErrorContent = document.getElementById('api-error-content'),
+        apiErrorElement = document.getElementById('api-error-msg'),
+        logoutElement = document.getElementById('logout-link');
 
-    const playlistContent = document.getElementById('playlist-content');
-    const playlistItem = document.getElementById('playlist');
-    const trackTemplate = document.getElementById('audio_item');
-
-    const emptyPlaylistContent = document.getElementById('empty-playlist-content');
-
-    const apiErrorContent = document.getElementById('api-error-content');
-    const apiErrorElement = document.getElementById('api-error-msg');
-
-    const logoutElement = document.getElementById('logout-link');
-
-    const CSS_HIDDEN_CLASS = 'hidden';
-    const CSS_PLAYING_CLASS = 'playing';
-    const CSS_CONTENT_CLASS = 'content';
-    const CSS_SCROLL_OFFSET = 50;
+    const CSS_HIDDEN_CLASS = 'hidden',
+        CSS_PLAYING_CLASS = 'playing',
+        CSS_CONTENT_CLASS = 'content',
+        CSS_SCROLL_OFFSET = 50;
 
     const audioPlayer = new Player(false);
 
@@ -277,4 +273,4 @@
     });
 
 
-})(window);
+})();
