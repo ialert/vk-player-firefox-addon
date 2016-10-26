@@ -1,7 +1,7 @@
 {
   "title": "Vk.com music player toolbar",
   "name": "vk-music-player-addon",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "vk.com music player toolbar",
   "main": "lib/main.js",
   "author": "Oleg Deryabin",
