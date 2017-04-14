@@ -1,3 +1,7 @@
+```diff
+- This repository is obsolete! Unfortunately, vk.com audio API was closed on 16.12.2016.
+```
+
 ## **Vk.com music player toolbar** ##
 ----------
 Firefox addon that adds vk.com music player icons on browser toolbar
